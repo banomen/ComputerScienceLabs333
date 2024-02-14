@@ -18,13 +18,13 @@ int main() {
 
     switch (operation) {
         case '+':
-            std::cout << y + x << std::endl;
+            std::cout << "Result: " << y + x << std::endl;
             break;
         case '-':
-            std::cout << y - x << std::endl;
+            std::cout << "Result: " << y - x << std::endl;
             break;
         case '*':
-            std::cout << y * x << std::endl;
+            std::cout << "Result: " << y * x << std::endl;
             break;
         case '/':
             std::cout << "Result: " << y / x << std::endl;
