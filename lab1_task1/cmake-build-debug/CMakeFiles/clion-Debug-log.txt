@@ -1,0 +1,1 @@
+CMakeLists.txt not found in C:\Users\Omen\Desktop\bab\ComputerScienceLabs333\lab1_task1 Select CMakeLists.txt
