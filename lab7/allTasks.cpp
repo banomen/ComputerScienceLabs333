@@ -1,6 +1,3 @@
-//
-// Created by Omen on 26.03.2024.
-//
 #include <iostream>
 #include <cmath>
 #include <iomanip>
@@ -106,8 +103,8 @@ int main() {
     while (1) {
         int choice;
         cout << "1 - dist between 2 points\n"
-                "2 - find max\n"
-                "3 - negative to zero" << endl;
+                "2 - date, name, surename\n"
+                "3 - date with month names, name, surename" << endl;
         cin >> choice;
 
         switch (choice) {
