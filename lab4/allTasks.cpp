@@ -55,9 +55,6 @@ int main() {
         std::cin >> choice;
 
         switch (choice) {
-            default:
-                std::cout << "Unknown operation, restart program" << std::endl;
-                break;
             case 1:
                 std::cout << "Insert height" << std::endl;
                 std::cin >> h;

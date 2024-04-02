@@ -108,8 +108,6 @@ int main() {
         cin >> choice;
 
         switch (choice) {
-            default:
-                cout << "Invalid task" << endl;
             case 1:
                 task1();
                 break;

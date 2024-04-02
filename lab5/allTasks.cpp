@@ -71,9 +71,6 @@ int main() {
         std::cin >> choice;
 
         switch (choice) {
-            default:
-                std::cout << "Invalid task number" << std::endl << std::endl;
-                break;
             case 1:
                 task1();
                 break;
