@@ -1,9 +1,6 @@
 //
 // Created by Omen on 02.04.2024.
 //
-//
-// Created by Omen on 02.04.2024.
-//
 #include <iostream>
 using namespace std;
 
