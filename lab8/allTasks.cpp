@@ -12,10 +12,14 @@ struct point {
     float distToZero;
 };
 
+struct man {
+    char name[50];
+    char surname[50];
+    int age;
+};
+
 float distanceToCenter(float x, float y) {
-    float result;
-    result = sqrt(pow(0 - x,2) + pow(0 - y,2));
-    return result;
+    return sqrt(pow(0 - x,2) + pow(0 - y,2));
 }
 
 void task1() {
@@ -35,29 +39,24 @@ void task1() {
         p[i].distToZero = distanceToCenter(p[i].x, p[i].y);
     }
 
-    for (int i = 0; i < MAX; i++) {
-        if (p[i].distToZero > p[i + 1].distToZero) {
-            maxDist = p[i].distToZero;
-            maxX = p[i].x;
-            maxY = p[i].y;
-        }
-
-        if (p[i].distToZero < p[i + 1].distToZero) {
-            minDist = p[i].distToZero;
-            minX = p[i].x;
-            minY = p[i].y;
+    for(int i = 0; i < MAX; i++) {
+        for (int j = i + 1; j < MAX; j++) {
+            if (p[i].distToZero < p[j].distToZero)
+                swap(p[i],p[j]);
         }
     }
 
-    cout << "Max distance to zero coords is: " << maxDist << endl << "Coords of this point: " << maxX << ',' << maxY << endl << endl;
-    cout << "Min distance to zero coords is: " << minDist << endl << "Coords of this point: " << minX << ',' << minY << endl << endl;
-}
+    maxDist = p[0].distToZero;
+    maxX = p[0].x;
+    maxY = p[0].y;
 
-struct man {
-    char name[50];
-    char surname[50];
-    int age;
-};
+    minDist = p[MAX - 1].distToZero;
+    minX = p[MAX - 1].x;
+    minY = p[MAX - 1].y;
+
+    cout << "Max distance to zero coords is: " << maxDist << endl << " Coords of this point: " << maxX << ',' << maxY << endl << endl;
+    cout << "Min distance to zero coords is: " << minDist << endl << " Coords of this point: " << minX << ',' << minY << endl << endl;
+}
 
 void task2() {
     int MAX = 5;
@@ -82,7 +81,7 @@ void task2() {
     if (choise == 1) {
         for(int i = 0; i < MAX; i++) {
             for (int j = i + 1; j < MAX; j++) {
-                if (m[i].age > m[j].age)
+                if (m[i].age < m[j].age)
                     swap(m[i],m[j]);
             }
         }
@@ -107,18 +106,19 @@ void task3() {
 
     while (n > 0) {
         cout << n - 1 << endl;
+        n--;
     }
 }
 
 int main() {
     int choice;
 
-    cout << "1 - max + min dist to zero coords \n"
-            "2 - sort array of structures by age or surname \n"
-            "3 - output all numbers before number\n";
-    cin >> choice;
-
     while (1) {
+        cout << "1 - max + min dist to zero coords \n"
+                "2 - sort array of structures by age or surname \n"
+                "3 - output all numbers before number\n";
+        cin >> choice;
+
         switch (choice) {
             case 1:
                 task1();
@@ -128,9 +128,6 @@ int main() {
                 break;
             case 3:
                 task3();
-                break;
-            default:
-                cout << "invalid task number. Restart";
                 break;
         }
     }

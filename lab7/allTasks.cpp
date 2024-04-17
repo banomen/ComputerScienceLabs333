@@ -4,9 +4,33 @@
 
 using namespace std;
 
+enum monthConverter {
+    January = 1,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
+};
+
 struct point {
     float x[2];
     float y[2];
+};
+
+struct date {
+    int day, year;
+    string month;
+};
+
+struct man {
+    char name[80], surename[80];
 };
 
 void task1() {
@@ -25,14 +49,6 @@ void task1() {
     cout << "Distance: " << sqrt(pow((p.x[0] - p.x[1]),2) + pow((p.y[0] - p.y[1]),2)) << endl;
 }
 
-struct date {
-    int day, month, year;
-};
-
-struct man {
-    char name[80], surename[80];
-};
-
 void task2() {
     date d;
     man m;
@@ -49,12 +65,14 @@ void task2() {
     cout << "Enter year of birth: " << endl;
     cin >> d.year;
 
-    cout <<"Name: " << m.name << endl << "Surename: " << m.surename << endl <<"Date of birth: " << d.day << "." << d.month <<"." << d.year << endl;
+    cout << "Name: " << m.name << endl << "Surename: " << m.surename << endl << "Date of birth: " << d.day << "." << d.month << "." << d.year << endl;
 }
 
 void task3() {
     date d;
     man m;
+
+    int monthNumber;
 
     cout <<"Enter name: " << endl;
     cin >> m.name;
@@ -63,40 +81,35 @@ void task3() {
 
     cout << "Enter day of birth: " << endl;
     cin >> d.day;
+
     cout << "Enter month of birth: " << endl;
-    cin >> d.month;
+    cin >> monthNumber;
+    if (monthNumber < 1 || monthNumber > 12) {
+        std::cout << "invalid month number" << endl << endl;
+        return;
+    }
+
     cout << "Enter year of birth: " << endl;
     cin >> d.year;
 
-    string month;
+    monthConverter month = static_cast<monthConverter>(monthNumber);
 
-    if (d.month == 1) {
-        month = "January";
-    } else if (d.month == 2) {
-        month = "February";
-    } else if (d.month == 3) {
-        month = "March";
-    } else if (d.month == 4) {
-        month = "April";
-    } else if (d.month == 5) {
-        month = "May";
-    } else if (d.month == 6) {
-        month = "June";
-    } else if (d.month == 7) {
-        month = "July";
-    } else if (d.month == 8) {
-        month = "August";
-    } else if (d.month == 9) {
-        month = "September";
-    } else if (d.month == 10) {
-        month = "October";
-    } else if (d.month == 11) {
-        month = "November";
-    } else if (d.month == 12) {
-        month = "December";
+    switch (month) {
+        case January: d.month = "January"; break;
+        case February: d.month = "February"; break;
+        case March: d.month = "March"; break;
+        case April: d.month = "April"; break;
+        case May: d.month = "May"; break;
+        case June: d.month = "June"; break;
+        case July: d.month = "July"; break;
+        case August: d.month = "August"; break;
+        case September: d.month = "September"; break;
+        case October: d.month = "October"; break;
+        case November: d.month = "November"; break;
+        case December: d.month = "December"; break;
     }
 
-    cout <<"Name: " << m.name << endl << "Surename: " << m.surename << endl <<"Date of birth: " << d.day << " " << month <<" " << d.year << endl;
+    cout << "Name: " << m.name << endl << "Surename: " << m.surename << endl << "Date of birth: " << d.day << ' ' << d.month << ' ' << d.year << endl << endl;
 }
 
 int main() {
@@ -104,7 +117,7 @@ int main() {
         int choice;
         cout << "1 - dist between 2 points\n"
                 "2 - date, name, surename\n"
-                "3 - date with month names, name, surename" << endl;
+                "3 - date with monthConverter names, name, surename" << endl;
         cin >> choice;
 
         switch (choice) {
